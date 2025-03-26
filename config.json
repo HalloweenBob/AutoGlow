@@ -1,5 +1,6 @@
 {
-  "default_audio_folder": "C:/routines",
+  "default_audio_folder": "C:/routines/songs",
+  "default_routine_folder": "C:/routines",
   "default_offset_ms": 150,
   "default_light_count": 6,
   "dmx_start_address": 1

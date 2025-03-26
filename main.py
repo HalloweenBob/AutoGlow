@@ -7,25 +7,27 @@ from PySide6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
     QLabel, QFileDialog, QSpinBox, QSlider, QLineEdit
 )
+from song_loader import SongLoader
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
+from config_loader import load_config
 
+config = load_config()
 CONFIG_FILE = "config.json"
 
 class AutoGlowApp(QWidget):
-    def __init__(self):
+   def __init__(self):
         super().__init__()
         self.setWindowTitle("Auto Glow")
         self.setGeometry(100, 100, 900, 500)
         self.setStyleSheet("background-color: #2B0000; color: white;")
         self.font = QFont("Arial", 10)
-
         self.config = self.load_config()
         self.audio_file_path = None
-
         self.init_ui()
+        self.song_loader = SongLoader(self)
 
-    def init_ui(self):
+   def init_ui(self):
         layout = QVBoxLayout()
         top_bar = QHBoxLayout()
 
@@ -57,6 +59,10 @@ class AutoGlowApp(QWidget):
         self.offset_slider.setFixedWidth(150)
         top_bar.addWidget(self.offset_slider)
 
+	#Load Songs To Library
+        layout.addWidget(QPushButton("🎵 Load One Song", clicked=self.song_loader.load_single_song))
+        layout.addWidget(QPushButton("📂 Load All Songs from Folder", clicked=self.song_loader.load_all_from_folder))
+        layout.addWidget(QPushButton("🗂️ Load Selected Songs", clicked=self.song_loader.load_multiple_songs))
         layout.addLayout(top_bar)
 
         # LED Dot Preview Row (visual only)
@@ -66,7 +72,6 @@ class AutoGlowApp(QWidget):
 
         # Listen to changes
         self.light_count_spin.valueChanged.connect(self.on_light_count_changed)
-
         self.setLayout(layout)
 
     def load_audio_file(self):
