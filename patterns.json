@@ -1,0 +1,100 @@
+[
+  {
+    "name": "Left Cascade",
+    "type": "chase",
+    "steps": 6,
+    "intensity": "medium",
+    "default_duration_s": 3.0,
+    "min_balloons": 4,
+    "max_balloons": 15,
+    "used_balloons": "all",
+    "direction": "left_to_right",
+    "tags": ["symmetric", "chase", "short", "repeatable"],
+    "repeat_limit": 3,
+    "rules": {
+      "max_continuous_burn": 2.5,
+      "cooldown_after_repeat": 5
+    }
+  },
+  {
+    "name": "Right Cascade",
+    "type": "chase",
+    "steps": 6,
+    "intensity": "medium",
+    "default_duration_s": 3.0,
+    "min_balloons": 4,
+    "max_balloons": 15,
+    "used_balloons": "all",
+    "direction": "right_to_left",
+    "tags": ["symmetric", "chase", "short", "repeatable"],
+    "repeat_limit": 3,
+    "rules": {
+      "max_continuous_burn": 2.5,
+      "cooldown_after_repeat": 5
+    }
+  },
+  {
+    "name": "Center Burst",
+    "type": "expansion",
+    "steps": 4,
+    "intensity": "high",
+    "default_duration_s": 2.0,
+    "min_balloons": 4,
+    "max_balloons": 15,
+    "used_balloons": "center_out",
+    "tags": ["impact", "symmetric", "medium_burn"],
+    "repeat_limit": 2,
+    "rules": {
+      "max_continuous_burn": 3.0,
+      "cooldown_after_repeat": 8
+    }
+  },
+  {
+    "name": "Echo Drop",
+    "type": "dissipate",
+    "steps": 6,
+    "intensity": "high",
+    "default_duration_s": 2.5,
+    "min_balloons": 4,
+    "max_balloons": 15,
+    "used_balloons": "all",
+    "tags": ["impact", "symmetric", "echo", "short"],
+    "repeat_limit": 2,
+    "rules": {
+      "max_continuous_burn": 2.5,
+      "cooldown_after_repeat": 6
+    }
+  },
+  {
+    "name": "Pulse Alternator",
+    "type": "alternating",
+    "steps": 4,
+    "intensity": "low",
+    "default_duration_s": 2.0,
+    "min_balloons": 4,
+    "max_balloons": 15,
+    "used_balloons": "alternating",
+    "tags": ["pulses", "short", "rhythmic"],
+    "repeat_limit": 3,
+    "rules": {
+      "max_continuous_burn": 1.0,
+      "cooldown_after_repeat": 3
+    }
+  },
+  {
+    "name": "Volume Meter Real",
+    "type": "volume_amplitude_map",
+    "steps": 8,
+    "intensity": "high",
+    "default_duration_s": 5.0,
+    "min_balloons": 4,
+    "max_balloons": 6,
+    "used_balloons": "volume_based",
+    "tags": ["thematic", "dynamic", "chorus", "long"],
+    "repeat_limit": 1,
+    "rules": {
+      "max_continuous_burn": 4.5,
+      "cooldown_after_repeat": 15
+    }
+  }
+]
