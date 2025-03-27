@@ -5,7 +5,10 @@ import os
 import random
 from datetime import datetime
 
+         
 def generate_routine(beat_data, light_count, offset_ms, patterns):
+    print("Generating routine...")
+    
     routine = {
         "version": 1.0,
         "generated": datetime.now().isoformat(),
@@ -16,12 +19,14 @@ def generate_routine(beat_data, light_count, offset_ms, patterns):
 
     beats = beat_data["beats"]
     tempo = beat_data.get("tempo", 120)
-
+    
+    print(f"Beat count: {len(beats)}")
+    print(f"Light count: {light_count}")
+    
     for beat_time in beats:
         pattern = random.choice(patterns)
         step_time = beat_time + (offset_ms / 1000.0)
 
-        # Simulate a very basic chase pattern
         for i in range(light_count):
             routine["events"].append({
                 "start_time": round(step_time + i * 0.1, 3),
@@ -30,8 +35,10 @@ def generate_routine(beat_data, light_count, offset_ms, patterns):
                 "intensity": 255
             })
 
+    print(f"Total events: {len(routine['events'])}")
     return routine
 
+    
 
 def save_routine(routine_data, song_filename, output_dir="C:/routines"):
     base_name = os.path.basename(song_filename)

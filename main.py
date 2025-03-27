@@ -102,7 +102,7 @@ class AutoGlowApp(QWidget):
             dot = QLabel("●")
             dot.setFont(QFont("Arial", 24))
             dot.setAlignment(Qt.AlignCenter)
-            dot.setStyleSheet("color: red;")
+            dot.setStyleSheet("color: #000000;")
             self.dot_row.addWidget(dot)
 
    def on_light_count_changed(self, value):
